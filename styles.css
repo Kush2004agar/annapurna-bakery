@@ -9,6 +9,11 @@
     --white: #FFFFFF;
     --shadow-soft: rgba(255, 182, 193, 0.2);
     --shadow-medium: rgba(230, 230, 250, 0.3);
+    --gold: #D4AF37;
+    --gold-light: #F4E4BC;
+    --watercolor-pink: rgba(255, 182, 193, 0.3);
+    --watercolor-purple: rgba(221, 160, 221, 0.3);
+    --watercolor-lavender: rgba(230, 230, 250, 0.4);
 }
 
 /* ===== Reset & Base Styles ===== */
@@ -27,6 +32,105 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Watercolor Background Effects */
+.watercolor-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--watercolor-pink) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, var(--watercolor-purple) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, var(--watercolor-lavender) 0%, transparent 60%);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.section-watercolor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(221, 160, 221, 0.15) 0%, transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cakes-bg {
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(230, 230, 250, 0.2) 0%, transparent 50%);
+}
+
+.custom-bg {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(221, 160, 221, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(255, 182, 193, 0.2) 0%, transparent 50%);
+}
+
+.gallery-bg {
+    background: 
+        radial-gradient(circle at 50% 30%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 70%, rgba(230, 230, 250, 0.15) 0%, transparent 50%);
+}
+
+.testimonials-bg {
+    background: 
+        radial-gradient(circle at 15% 50%, rgba(221, 160, 221, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 50%, rgba(255, 182, 193, 0.15) 0%, transparent 50%);
+}
+
+.contact-bg {
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(221, 160, 221, 0.2) 0%, transparent 50%);
+}
+
+/* Scattered Dots Pattern */
+.scattered-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        radial-gradient(circle, rgba(255, 182, 193, 0.4) 1px, transparent 1px),
+        radial-gradient(circle, rgba(221, 160, 221, 0.3) 1px, transparent 1px);
+    background-size: 30px 30px, 50px 50px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Floral Decorations */
+.floral-decoration {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 2;
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite;
+}
+
+.floral-top-left {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-15deg);
+}
+
+.floral-bottom-right {
+    bottom: 15%;
+    right: 5%;
+    transform: rotate(15deg);
+    animation-delay: 2s;
 }
 
 .hindi-subtitle {
@@ -101,6 +205,36 @@ h1, h2, h3 {
     margin-bottom: 0.2rem;
 }
 
+/* Colorful Logo Letters */
+.logo-text, .hero-title-logo {
+    display: inline-block;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: inherit;
+}
+
+.logo-letter {
+    display: inline-block;
+    text-shadow: 
+        2px 2px 0px rgba(0, 0, 0, 0.1),
+        0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 2px 4px;
+    margin: 0 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.logo-letter:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+.nav-brand .logo-letter {
+    font-size: 1.5rem;
+    padding: 1px 3px;
+}
+
 .nav-brand .tagline {
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 0.85rem;
@@ -170,6 +304,11 @@ h1, h2, h3 {
     padding: 4rem 2rem;
 }
 
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-content {
     text-align: center;
     z-index: 2;
@@ -182,6 +321,129 @@ h1, h2, h3 {
     color: var(--white);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 10px var(--shadow-medium);
+}
+
+/* Gold Frame Logo */
+.logo-frame {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gold-frame {
+    position: relative;
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 8px 30px rgba(212, 175, 55, 0.4),
+        inset 0 2px 10px rgba(255, 255, 255, 0.3);
+    border: 4px solid var(--gold);
+    animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+.gold-frame::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--gold), var(--gold-light), var(--gold));
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(10px);
+}
+
+@keyframes gentle-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.watercolor-inside {
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(221, 160, 221, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-title-logo {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title-logo .logo-letter {
+    font-size: 3rem;
+    padding: 4px 6px;
+    margin: 0 2px;
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle-frame {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: #8B4513;
+    margin-top: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gold-frame-small {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    border-radius: 25px;
+    box-shadow: 
+        0 6px 25px rgba(212, 175, 55, 0.3),
+        inset 0 2px 8px rgba(255, 255, 255, 0.3);
+    border: 3px solid var(--gold);
+}
+
+.watercolor-inside-small {
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(221, 160, 221, 0.3) 0%, transparent 60%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.floral-corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
 }
 
 .hero-subtitle {
@@ -298,22 +560,39 @@ h1, h2, h3 {
     opacity: 0.3;
 }
 
-.floating-cake:nth-child(1) {
-    top: 10%;
-    left: 10%;
+.floating-cupcake {
+    top: 15%;
+    left: 8%;
     animation-delay: 0s;
+    font-size: 3.5rem;
 }
 
-.floating-cake:nth-child(2) {
-    top: 60%;
-    right: 15%;
+.floating-cakepop {
+    top: 50%;
+    right: 12%;
+    animation-delay: 1.5s;
+    font-size: 3rem;
+}
+
+.floating-pretzel {
+    bottom: 25%;
+    left: 15%;
+    animation-delay: 3s;
+    font-size: 2.5rem;
+}
+
+.floating-strawberry {
+    top: 30%;
+    right: 8%;
+    animation-delay: 4.5s;
+    font-size: 2.8rem;
+}
+
+.floating-cake {
+    bottom: 15%;
+    right: 20%;
     animation-delay: 2s;
-}
-
-.floating-cake:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 4s;
+    font-size: 3.2rem;
 }
 
 @keyframes float {
@@ -329,6 +608,8 @@ h1, h2, h3 {
 .about {
     padding: 5rem 0;
     background: var(--accent-cream);
+    position: relative;
+    overflow: hidden;
 }
 
 .about-content {
@@ -397,6 +678,8 @@ h1, h2, h3 {
 .cakes {
     padding: 5rem 0;
     background: var(--white);
+    position: relative;
+    overflow: hidden;
 }
 
 .cake-categories {
@@ -413,6 +696,26 @@ h1, h2, h3 {
     text-align: center;
     box-shadow: 0 6px 20px var(--shadow-soft);
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cake-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle, rgba(255, 182, 193, 0.2) 0%, transparent 70%),
+        radial-gradient(circle, rgba(221, 160, 221, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cake-card:hover::before {
+    opacity: 1;
 }
 
 .cake-card:hover {
@@ -452,6 +755,8 @@ h1, h2, h3 {
 .custom-orders {
     padding: 5rem 0;
     background: linear-gradient(135deg, var(--primary-lavender), var(--accent-cream));
+    position: relative;
+    overflow: hidden;
 }
 
 .order-steps {
@@ -469,6 +774,32 @@ h1, h2, h3 {
     box-shadow: 0 6px 20px var(--shadow-soft);
     position: relative;
     transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.step-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(221, 160, 221, 0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.step-card:hover::after {
+    opacity: 1;
+}
+
+.step-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .step-card:hover {
@@ -536,6 +867,8 @@ h1, h2, h3 {
 .gallery {
     padding: 5rem 0;
     background: var(--white);
+    position: relative;
+    overflow: hidden;
 }
 
 .gallery-grid {
@@ -558,7 +891,10 @@ h1, h2, h3 {
 }
 
 .gallery-placeholder {
-    background: linear-gradient(135deg, var(--primary-lavender), var(--primary-peach));
+    background: 
+        linear-gradient(135deg, var(--primary-lavender), var(--primary-peach)),
+        radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(221, 160, 221, 0.3) 0%, transparent 60%);
     padding: 4rem 2rem;
     text-align: center;
     min-height: 300px;
@@ -566,6 +902,29 @@ h1, h2, h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-placeholder::before {
+    content: '🌸';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: float 5s ease-in-out infinite;
+}
+
+.gallery-placeholder::after {
+    content: '🌿';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
 }
 
 .gallery-icon {
@@ -583,6 +942,8 @@ h1, h2, h3 {
 .testimonials {
     padding: 5rem 0;
     background: var(--accent-cream);
+    position: relative;
+    overflow: hidden;
 }
 
 .testimonials-grid {
@@ -598,6 +959,25 @@ h1, h2, h3 {
     border-radius: 25px;
     box-shadow: 0 6px 20px var(--shadow-soft);
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle, rgba(255, 182, 193, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.testimonial-card:hover::before {
+    opacity: 1;
 }
 
 .testimonial-card:hover {
@@ -627,6 +1007,8 @@ h1, h2, h3 {
 .contact {
     padding: 5rem 0;
     background: linear-gradient(135deg, var(--primary-lavender), var(--primary-peach));
+    position: relative;
+    overflow: hidden;
 }
 
 .contact-content {
@@ -649,6 +1031,31 @@ h1, h2, h3 {
     align-items: center;
     text-align: center;
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.contact-item:hover::after {
+    opacity: 1;
+}
+
+.contact-item > * {
+    position: relative;
+    z-index: 1;
 }
 
 .contact-item:hover {
@@ -807,6 +1214,29 @@ h1, h2, h3 {
         font-size: 2.5rem;
     }
 
+    .hero-title-logo {
+        font-size: 2rem;
+    }
+
+    .hero-title-logo .logo-letter {
+        font-size: 1.8rem;
+        padding: 2px 4px;
+    }
+
+    .gold-frame {
+        width: 300px;
+        padding: 20px;
+    }
+
+    .watercolor-inside {
+        min-height: 250px;
+        padding: 30px 15px;
+    }
+
+    .hero-subtitle-frame {
+        font-size: 1.5rem;
+    }
+
     .hero-subtitle {
         font-size: 1.3rem;
     }
@@ -847,11 +1277,47 @@ h1, h2, h3 {
     .whatsapp-icon {
         font-size: 1.5rem;
     }
+
+    .floral-decoration {
+        font-size: 1.5rem;
+    }
+
+    .floating-cake {
+        font-size: 2rem !important;
+    }
+
+    .nav-brand .logo-letter {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+    }
+
+    .hero-title-logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-title-logo .logo-letter {
+        font-size: 1.4rem;
+        padding: 2px 3px;
+        margin: 0 1px;
+    }
+
+    .gold-frame {
+        width: 250px;
+        padding: 15px;
+    }
+
+    .watercolor-inside {
+        min-height: 200px;
+        padding: 20px 10px;
+    }
+
+    .hero-subtitle-frame {
+        font-size: 1.2rem;
     }
 
     .section-title {
@@ -864,5 +1330,9 @@ h1, h2, h3 {
     .testimonials-grid,
     .contact-info {
         grid-template-columns: 1fr;
+    }
+
+    .logo-frame {
+        margin-bottom: 1.5rem;
     }
 }
