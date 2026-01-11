@@ -99,14 +99,51 @@ document.querySelectorAll('.btn-whatsapp, .floating-whatsapp').forEach(btn => {
     });
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
+// Scroll-based gradient color shift (optimized with requestAnimationFrame)
+let scrollTicking = false;
+const body = document.body;
+const cream = '255, 247, 242'; // #FFF7F2
+
+function updateGradientOnScroll() {
     const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero && scrolled < hero.offsetHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const scrollPercent = Math.min(scrolled / maxScroll, 1);
+    
+    // Calculate color mix based on scroll position
+    // More lavender at top (0), more peach as we scroll down (1)
+    const lavenderWeight = 1 - scrollPercent * 0.25; // Starts at 1, goes to 0.75
+    const peachWeight = 0.25 + scrollPercent * 0.35; // Starts at 0.25, goes to 0.6
+    
+    // Lavender: #C6B7E2 (198, 183, 226)
+    // Peach: #FFB7A5 (255, 183, 165)
+    const lavenderR = 198, lavenderG = 183, lavenderB = 226;
+    const peachR = 255, peachG = 183, peachB = 165;
+    
+    // Create smooth color transition
+    const currentLavenderR = Math.round(lavenderR * lavenderWeight + peachR * (1 - lavenderWeight));
+    const currentLavenderG = Math.round(lavenderG * lavenderWeight + peachG * (1 - lavenderWeight));
+    const currentLavenderB = Math.round(lavenderB * lavenderWeight + peachB * (1 - lavenderWeight));
+    
+    const currentPeachR = Math.round(peachR * peachWeight + lavenderR * (1 - peachWeight));
+    const currentPeachG = Math.round(peachG * peachWeight + lavenderG * (1 - peachWeight));
+    const currentPeachB = Math.round(peachB * peachWeight + lavenderB * (1 - peachWeight));
+    
+    // Apply with smooth transition
+    body.style.background = `linear-gradient(135deg, 
+        rgb(${currentLavenderR}, ${currentLavenderG}, ${currentLavenderB}) 0%, 
+        rgb(${cream}) 50%, 
+        rgb(${currentPeachR}, ${currentPeachG}, ${currentPeachB}) 100%)`;
+    body.style.backgroundSize = '200% 200%';
+    
+    scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        window.requestAnimationFrame(updateGradientOnScroll);
+        scrollTicking = true;
     }
-});
+}, { passive: true });
 
 // Form validation for future contact form
 function validateForm(form) {
