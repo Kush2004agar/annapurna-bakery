@@ -38,10 +38,11 @@ body {
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, #C6B7E2 0%, #FFF7F2 50%, #FFB7A5 100%) !important;
-    background-size: 200% 200% !important;
-    background-attachment: fixed !important;
-    animation: gradientBreath 20s ease-in-out infinite !important;
+    background: 
+        linear-gradient(135deg, #C6B7E2 0%, #E8D5F2 25%, #FFF7F2 50%, #FFE5D9 75%, #FFB7A5 100%);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradientBreath 25s ease-in-out infinite;
     transition: background 0.3s ease;
 }
 
@@ -50,8 +51,14 @@ body {
     0% {
         background-position: 0% 50%;
     }
-    50% {
+    25% {
         background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
     }
     100% {
         background-position: 0% 50%;
@@ -65,11 +72,13 @@ body::before {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 60%;
-    background: radial-gradient(ellipse at center bottom, 
-        rgba(255, 183, 165, 0.07) 0%, 
-        rgba(255, 183, 165, 0.05) 30%,
-        transparent 70%);
+    height: 70%;
+    background: 
+        radial-gradient(ellipse 800px 600px at center bottom, 
+            rgba(255, 183, 165, 0.15) 0%, 
+            rgba(255, 183, 165, 0.08) 25%,
+            rgba(198, 183, 226, 0.05) 50%,
+            transparent 70%);
     pointer-events: none;
     z-index: 0;
     animation: warmthRise 22s ease-in-out infinite;
@@ -79,11 +88,43 @@ body::before {
 @keyframes warmthRise {
     0%, 100% {
         transform: translateY(0) scale(1);
-        opacity: 0.06;
+        opacity: 0.8;
     }
     50% {
-        transform: translateY(-20px) scale(1.05);
-        opacity: 0.08;
+        transform: translateY(-30px) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Additional decorative background elements */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(198, 183, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 183, 165, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 247, 242, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatBackground 30s ease-in-out infinite;
+}
+
+@keyframes floatBackground {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    33% {
+        transform: translate(20px, -20px) scale(1.05);
+        opacity: 0.8;
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+        opacity: 0.7;
     }
 }
 
@@ -333,8 +374,11 @@ h1, h2, h3 {
 
 /* ===== Hero Section ===== */
 .hero {
-    background: transparent;
-    backdrop-filter: blur(2px);
+    background: linear-gradient(180deg,
+        rgba(198, 183, 226, 0.3) 0%,
+        rgba(255, 247, 242, 0.25) 50%,
+        rgba(255, 183, 165, 0.3) 100%);
+    backdrop-filter: blur(5px);
     min-height: 90vh;
     display: flex;
     align-items: center;
@@ -342,6 +386,32 @@ h1, h2, h3 {
     position: relative;
     overflow: hidden;
     padding: 4rem 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 183, 165, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(198, 183, 226, 0.2) 0%, transparent 50%);
+    animation: heroFloat 20s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(30px, -30px);
+        opacity: 0.8;
+    }
 }
 
 .hero > * {
@@ -561,18 +631,28 @@ h1, h2, h3 {
 }
 
 .highlight-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 247, 242, 0.9) 100%);
+    backdrop-filter: blur(10px);
     padding: 1.5rem;
     border-radius: 20px;
-    box-shadow: 0 4px 15px var(--shadow-soft);
+    box-shadow: 
+        0 6px 24px rgba(198, 183, 226, 0.3),
+        0 3px 12px rgba(255, 183, 165, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     min-width: 200px;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .highlight-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 12px 40px rgba(198, 183, 226, 0.4),
+        0 6px 20px rgba(255, 183, 165, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .highlight-icon {
@@ -649,10 +729,15 @@ h1, h2, h3 {
 /* ===== About Section ===== */
 .about {
     padding: 5rem 0;
-    background: rgba(255, 247, 242, 0.2);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg, 
+        rgba(255, 247, 242, 0.4) 0%,
+        rgba(198, 183, 226, 0.3) 50%,
+        rgba(255, 247, 242, 0.4) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .about-content {
@@ -722,10 +807,15 @@ h1, h2, h3 {
 /* ===== Cakes Section ===== */
 .cakes {
     padding: 5rem 0;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 183, 165, 0.2) 50%,
+        rgba(255, 255, 255, 0.25) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cake-categories {
@@ -736,16 +826,21 @@ h1, h2, h3 {
 }
 
 .cake-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 247, 242, 0.8) 100%);
+    backdrop-filter: blur(10px);
     padding: 2.5rem 2rem;
     border-radius: 25px;
     text-align: center;
-    box-shadow: 0 6px 20px var(--shadow-soft);
-    transition: transform 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(198, 183, 226, 0.3),
+        0 4px 16px rgba(255, 183, 165, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .cake-card::before {
@@ -767,8 +862,12 @@ h1, h2, h3 {
 }
 
 .cake-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px var(--shadow-medium);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(198, 183, 226, 0.4),
+        0 10px 30px rgba(255, 183, 165, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .cake-icon {
@@ -802,10 +901,15 @@ h1, h2, h3 {
 /* ===== Custom Orders Section ===== */
 .custom-orders {
     padding: 5rem 0;
-    background: rgba(198, 183, 226, 0.2);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg,
+        rgba(198, 183, 226, 0.35) 0%,
+        rgba(255, 247, 242, 0.3) 50%,
+        rgba(255, 183, 165, 0.25) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .order-steps {
@@ -816,16 +920,21 @@ h1, h2, h3 {
 }
 
 .step-card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 247, 242, 0.85) 100%);
+    backdrop-filter: blur(10px);
     padding: 2.5rem 2rem;
     border-radius: 25px;
     text-align: center;
-    box-shadow: 0 6px 20px var(--shadow-soft);
+    box-shadow: 
+        0 8px 32px rgba(198, 183, 226, 0.25),
+        0 4px 16px rgba(255, 183, 165, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .step-card::after {
@@ -854,7 +963,12 @@ h1, h2, h3 {
 }
 
 .step-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(198, 183, 226, 0.35),
+        0 10px 30px rgba(255, 183, 165, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .step-number {
@@ -919,10 +1033,15 @@ h1, h2, h3 {
 /* ===== Gallery Section ===== */
 .gallery {
     padding: 5rem 0;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(198, 183, 226, 0.25) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .gallery-grid {
@@ -995,10 +1114,15 @@ h1, h2, h3 {
 /* ===== Testimonials Section ===== */
 .testimonials {
     padding: 5rem 0;
-    background: rgba(255, 247, 242, 0.25);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg,
+        rgba(255, 247, 242, 0.4) 0%,
+        rgba(255, 183, 165, 0.3) 50%,
+        rgba(255, 247, 242, 0.4) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .testimonials-grid {
@@ -1009,15 +1133,20 @@ h1, h2, h3 {
 }
 
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 247, 242, 0.9) 100%);
+    backdrop-filter: blur(10px);
     padding: 2.5rem;
     border-radius: 25px;
-    box-shadow: 0 6px 20px var(--shadow-soft);
-    transition: transform 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(198, 183, 226, 0.3),
+        0 4px 16px rgba(255, 183, 165, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .testimonial-card::before {
@@ -1038,8 +1167,12 @@ h1, h2, h3 {
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px var(--shadow-medium);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(198, 183, 226, 0.4),
+        0 10px 30px rgba(255, 183, 165, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .stars {
@@ -1063,10 +1196,14 @@ h1, h2, h3 {
 /* ===== Contact Section ===== */
 .contact {
     padding: 5rem 0;
-    background: rgba(255, 183, 165, 0.25);
-    backdrop-filter: blur(1px);
+    background: linear-gradient(180deg,
+        rgba(255, 183, 165, 0.4) 0%,
+        rgba(198, 183, 226, 0.35) 50%,
+        rgba(255, 183, 165, 0.4) 100%);
+    backdrop-filter: blur(3px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .contact-content {
@@ -1080,19 +1217,24 @@ h1, h2, h3 {
 }
 
 .contact-item {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 247, 242, 0.9) 100%);
+    backdrop-filter: blur(10px);
     padding: 2.5rem;
     border-radius: 25px;
-    box-shadow: 0 6px 20px var(--shadow-soft);
+    box-shadow: 
+        0 8px 32px rgba(198, 183, 226, 0.3),
+        0 4px 16px rgba(255, 183, 165, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .contact-item::after {
@@ -1119,7 +1261,12 @@ h1, h2, h3 {
 }
 
 .contact-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(198, 183, 226, 0.4),
+        0 10px 30px rgba(255, 183, 165, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-icon {
